@@ -34,7 +34,6 @@ class Bank:
                     print(f"Запрос отклонён, недостаточно средств")
                     self.lock.acquire()
 
-
 bk = Bank()
 # Т.к. методы принимают self, в потоки нужно передать сам объект класса Bank
 th1 = threading.Thread(target=Bank.deposit, args=(bk,))
@@ -47,8 +46,3 @@ th1.join()
 th2.join()
 
 print(f'Итоговый баланс: {bk.balance}')
-
-
-
-
-
